@@ -1,0 +1,52 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+<title>{{ animal.nome }}</title>
+{% endblock %}
+
+{% block content %}
+    <div class="infowrapper">
+        <h2>{{ animal.nome }}</h2>
+        <img src="{{ animal.imagem.url }}">
+        <p><b>Espécie: </b>{{ animal.especie }}</p>
+        <p><b>Raça: </b>{{ animal.raca }}</p>
+        <p><b>Género: </b>{{ animal.genero }}</p>
+        <p><b>Idade: </b>{{ animal.idade }}</p>
+        <p>{{ animal.descricao }}</p>
+        {% if adocao == None %}
+                <a href="{% url 'animais:adocao' slug=animal.slug %}" class="adoptLink"><div class="adoptButton">Adotar</div></a>
+        {% else %}
+            {% if adocao.concretizada %}
+                <p class="adoptNoButton">Adotado</p>
+            {% else %}
+                <p class="adoptNoButton">Em processo de adoção</p>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div class="commentwrapper">
+        <h2>Comentários</h2>
+        <table>
+            {% for comentario in animal.comentario_set.all %}
+            <div class="comment">
+                <tr>
+                    <td width="20%">
+                        <p><b>{{ comentario.autor.username }}</b></p>
+                        <p><b>{{ comentario.data }}</b></p>
+                    </td>
+                    <td width="80%">
+                        <p>{{ comentario.texto }}</p>
+                    </td>
+                </tr>
+            </div>
+            {% endfor %}
+        </table>
+    </div>
+    {% if user.is_authenticated %}
+    <h3>Escreva um comentário:</h3>
+    <form class="comentario-form" action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Comentar">
+    </form>
+    {% endif %}
+{% endblock %}

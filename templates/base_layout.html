@@ -1,0 +1,46 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% block title %}
+        {% endblock %}
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+    <body>
+        <div class='wrapper'>
+            <header>
+                <a href="{% url 'index' %}"><img src="{% static 'logo.png' %}" alt="Centro Quatro Patas"></a>
+            </header>
+            <nav>
+                <ul>
+                    {% if user.is_authenticated %}
+                        <li>Bem-vindo, {{ user.username }}</li>
+                        <li><a href="{% url 'doacao:doacao' %}">Fazer Doação</a></li>
+                        <li>
+                            <form class="logout-link" action="{% url 'conta:logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Logout</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li><a href="{% url 'conta:login' %}">Login</a></li>
+                        <li><a href="{% url 'conta:signup' %}">Signup</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <div class="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <footer>
+                <h2>Contactos</h2>
+                <p><b> Localização:</b> Av. da República, Nº 52, Pisos 0 e 1 1050-196 Lisboa</p>
+                <p><b>E-mail:</b> geral@quatropatas.pt</p>
+                <p><b>Telefone:</b>21 432 19 35</p>
+                <p><b>Fax: </b>21 413 18 32</p>
+            </footer>
+        </div>
+    </body>
+</html>

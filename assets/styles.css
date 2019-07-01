@@ -1,0 +1,168 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the header */
+header {
+    background-color: SeaGreen;
+    margin: 0;
+    padding: 20px;
+}
+
+header img {
+    width: 100%;
+}
+
+nav {
+    background-color: DarkSeaGreen;
+    margin: 0;
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    position: relative;
+    top: -10px;
+    float: right;
+    margin: 0;
+}
+
+nav li {
+    float: left;
+    padding-left: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.1em;
+    background-color: SeaGreen;
+    padding: 5px;
+}
+
+nav a:hover, nav button:hover {
+    background-color: DarkSeaGreen;
+}
+
+nav button{
+    position: relative;
+    top: -5px;
+    background: none;
+    cursor: pointer;
+    border: 0;
+    font-size: 1em;
+    background-color: SeaGreen;
+    padding: 6px 5px 6px 5px;
+}
+
+footer {
+    background-color: DarkSeaGreen;
+    margin: 0;
+    clear: both;
+    padding: 10px;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+.content {
+    margin: 10px;
+    max-width: 1280px;
+    margin: auto;
+}
+
+.latestDonation {
+    text-align: center;
+    font-weight: bold;
+    color: SeaGreen;
+    border: 1px solid SeaGreen;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.flex-animals {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box {
+    flex-basis: 31%;
+    flex-grow: 1;
+    position: relative;
+    margin: 10px;
+}
+
+.box img {
+    width: 100%;
+}
+
+.box p {
+    font-size: 3em;
+    position: absolute;
+    top: -30px;
+    left: 20px;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+}
+
+@media (max-width: 600px) {
+    .box {
+        flex-basis: 100%;
+    }
+}
+
+.infowrapper {
+    overflow: auto;
+}
+
+.infowrapper img {
+    margin-right: 10px;
+    width: 30%;
+    float: left;
+}
+
+.adoptButton {
+    margin-left: 40%;
+    margin-right: 40%;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid SeaGreen;
+    border-radius: 10px;
+    background-color: SeaGreen;
+    color: white;
+}
+
+.adoptLink {
+    text-decoration: none;
+}
+
+.adoptNoButton {
+    margin-left: 40%;
+    margin-right: 40%;
+    padding: 5px;
+    text-align: center;
+    color: SeaGreen;
+    border: 1px solid SeaGreen;
+    border-radius: 10px;
+}
+
+.commentwrapper {
+    margin:10px;
+}
+
+.commentwrapper table {
+    width: 100%;
+    border: 1px solid black;
+    background: SeaGreen;
+    border-spacing: 0 10px;
+}
+
+.commentwrapper td {
+  border: 1px solid black;
+  background: white;
+}
+
+#id_texto {
+    width: 80%;
+}

@@ -1,0 +1,20 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+<title>Centro Quatro Patas</title>
+{% endblock %}
+
+{% block content %}
+    {% if doacao != None %}
+        <p class="latestDonation">Última doação: {{ doacao.quantia }}€, doado por {{ doacao.utilizador.username }}, em {{ doacao.dataDoacao }}</p>
+    {% endif %}
+    <h2>Lista de Animais</h2>
+    <div class="flex-animals">
+        {% for animal in animais %}
+        <div class="box">
+            <a href="{% url 'animais:animal' slug=animal.slug %}"><img src="{{ animal.imagem.url }}" alt="{{ animal.nome }}"></a>
+            <p>{{ animal.nome }}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

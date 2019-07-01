@@ -1,0 +1,23 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+<title>Doação</title>
+{% endblock %}
+
+{% block content %}
+<h2>Introdução de Dados: Doação</h2>
+<form method="post">{% csrf_token %}
+    {% if error_message %}  <p><strong>{{ error_message }}</strong></p> {% endif %}
+    {% if success_message %}  <p><strong>{{ success_message }}</strong></p> {% endif %}
+    {{ form.as_p }}
+    <input type='submit' value ='Confirmar'>
+
+   {% if messages %}
+   <ul class="messages">
+       {% for message in messages %}
+       <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+       {% endfor %}
+   </ul>
+   {% endif %}
+</form>
+{% endblock %}
